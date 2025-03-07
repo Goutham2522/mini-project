@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='disease.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Disease Recognition</h1>
+    </header>
+    <main>
+        <form action="/disease" method="post" enctype="multipart/form-data" class="upload-form">
+            <label for="image">Choose an Image:</label>
+            <input type="file" name="image" id="image" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        <section class="result">
+            <h2>Prediction Result:</h2>
+            <p>{{ prediction }}</p>
+            <h3>Learn More About Treatments:</h3>
+            <a href="https://www.google.com/search?q=treatment+for+{{ prediction|replace('_', ' ') }}" target="_blank">
+                Treatment Information for {{ prediction }}
+            </a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Plant Doctor. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
+
